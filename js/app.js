@@ -4,6 +4,11 @@
  * Define Global Variables
  * 
 */
+
+// Create area to house the NavBar
+var navSection = document.createDocumentFragment();
+
+// Pull existing UL from HTML page
 var navbarList = document.getElementById("navbar__list");
 
 
@@ -23,10 +28,24 @@ var navbarList = document.getElementById("navbar__list");
 
 // build the nav
 createNav = () => {
-  var link = document.createElement("li");
-  link.innerHTML = '<a href="#section1">Section 1</a>';
-  navbarList.appendChild(link);
+
+  var sectionNames = ["#section1", "#section2", "#section3"];
+
+  for (i = 0; i < 3; i++) {
+
+    var link = document.createElement('li');
+
+    var a = document.createElement('a');
+    a.setAttribute('href', sectionNames[i]);
+    a.innerText = "Section " + [i + 1];
+    a.className = 'menu__link';
+
+    link.appendChild(a);
+    navSection.appendChild(link);
+    navbarList.appendChild(navSection);
+
   }
+}
 
 
 // Add class 'active' to section when near top of viewport
@@ -50,3 +69,5 @@ createNav = () => {
 
 // page load
 window.addEventListener("load", createNav());
+
+console.log("where are you?");
