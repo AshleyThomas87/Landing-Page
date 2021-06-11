@@ -11,13 +11,23 @@ var navSection = document.createDocumentFragment();
 // Pull existing UL from HTML page
 var navbarList = document.getElementById("navbar__list");
 
-
+var sectionOne = document.getElementById("section1");
+var sectionTwo = document.getElementById("section2");
+var sectionThree = document.getElementById("section3");
 /**
  * End Global Variables
  * Start Helper Functions
  * 
 */
-
+var isInViewport = function (elem) {
+  var bounding = elem.getBoundingClientRect();
+  return (
+      bounding.top >= 0 &&
+      bounding.left >= 0 &&
+      bounding.bottom <= (window.innerHeight || document.documentElement.clientHeight) &&
+      bounding.right <= (window.innerWidth || document.documentElement.clientWidth)
+  );
+};
 
 
 /**
@@ -59,6 +69,26 @@ createNav = () => {
  * Begin Events
  * 
 */
+window.addEventListener('scroll', function(event) {
+  if (isInViewport(sectionOne)) {
+    console.log("section 1 is in the viewport");
+    document.getElementById("section1").className = "active";
+  }
+});
+
+window.addEventListener('scroll', function(event) {
+  if (isInViewport(sectionTwo)) {
+    console.log("section 2 is in the viewport");
+    document.getElementById("section2").className = "active";
+  }
+});
+
+window.addEventListener('scroll', function(event) {
+  if (isInViewport(sectionThree)) {
+    console.log("section 3 is in the viewport");
+    document.getElementById("section3").className = "active";
+  }
+});
 
 // Build menu 
 
