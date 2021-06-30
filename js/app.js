@@ -90,7 +90,7 @@ window.addEventListener('scroll', function (event) {
     document.getElementById("section2").className = "active";
   }
   else {
-    document.getElementById("section2").className = "active";
+    document.getElementById("section2").classList.remove('active');
   }
   }
 });
